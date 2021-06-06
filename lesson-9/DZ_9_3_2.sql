@@ -1,0 +1,25 @@
+DROP TRIGGER IF EXISTS `dz_9`.`products_BEFORE_UPDATE`;
+
+DELIMITER $$
+USE `dz_9`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `dz_9`.`products_BEFORE_UPDATE` BEFORE UPDATE ON `products` FOR EACH ROW
+BEGIN
+	IF NEW.name IS NULL AND NEW.description IS NULL THEN
+	SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'You have to fill out at least 1 field name or description'; 
+  END IF;
+END$$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS `dz_9`.`products_BEFORE_INSERT`;
+
+DELIMITER $$
+USE `dz_9`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `dz_9`.`products_BEFORE_INSERT` BEFORE INSERT ON `products` FOR EACH ROW
+BEGIN
+	IF NEW.name IS NULL AND NEW.description IS NULL THEN
+	SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'You have to fill out at least 1 field name or description'; 
+    END IF;
+END$$
+DELIMITER ;
