@@ -1,0 +1,21 @@
+--2.1.
+
+redis 127.0.0.1:6379> SET 87.118.82.13 1
+OK
+redis 127.0.0.1:6379> GET 87.118.82.13
+"1"
+redis 127.0.0.1:6379> incr 87.118.82.13
+(integer) 2
+redis 127.0.0.1:6379> get 87.118.82.13
+"2"
+
+----2.2.
+redis 127.0.0.1:6379> SET 'Andrey' 'andrey@gmail.com'
+OK
+redis 127.0.0.1:6379> GET 'Andrey'
+"andrey@gmail.com"
+redis 127.0.0.1:6379> SET 'vladimir@gmail.com' 'Vladimir'
+OK
+redis 127.0.0.1:6379> GET 'vladimir@gmail.com'
+"Vladimir"
+redis 127.0.0.1:6379>

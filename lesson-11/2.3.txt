@@ -1,0 +1,33 @@
+> use catalogs
+switched to db catalogs
+> db.catalogs.insertMany([
+... {'name':'Процессоры'},
+... {'name': 'Мат. платы'},
+... {'name': 'Видеокарты'},
+... {'name': 'Жёсткие диски'},
+... {'name': 'Оперативная память'}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("60c4c932211cdc6160fc0ad7"),
+                ObjectId("60c4c932211cdc6160fc0ad8"),
+                ObjectId("60c4c932211cdc6160fc0ad9"),
+                ObjectId("60c4c932211cdc6160fc0ada"),
+                ObjectId("60c4c932211cdc6160fc0adb")
+        ]
+}
+> use products
+switched to db products
+> db.products.insertMany([
+... {'id':1, 'name': 'Intel Core i3-8100', 'description':'Процессор для настольных ПК', 'price': 7890.00, 'calatog_id':1},
+... {'id':2, 'name': 'Intel Core i5-7400', 'description':'Процессор для настольных ПК', 'price': 12700.00, 'catalog_id':2}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("60c4caec211cdc6160fc0adc"),
+                ObjectId("60c4caec211cdc6160fc0add")
+        ]
+}
+> db.products.find()
+{ "_id" : ObjectId("60c4caec211cdc6160fc0adc"), "id" : 1, "name" : "Intel Core i3-8100", "description" : "Процессор для настольных ПК", "price" : 7890, "calatog_id" : 1 }
+{ "_id" : ObjectId("60c4caec211cdc6160fc0add"), "id" : 2, "name" : "Intel Core i5-7400", "description" : "Процессор для настольных ПК", "price" : 12700, "catalog_id" : 2 }
